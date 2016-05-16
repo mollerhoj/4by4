@@ -14,6 +14,15 @@ module.exports = class Board {
     }
   }
 
+  columnFull(x) {
+    for(let y = 0; y < this.height(); y++) {
+      if (this.matrix[y][x] == '.') {
+        return false;
+      }
+    }
+    return true;
+  };
+
   buildEmpty(height, width) {
     let matrix = Array(height);
     for(let y = 0; y < height; y++) {
@@ -37,7 +46,7 @@ module.exports = class Board {
   }
 
   setMatrix(matrix) {
-    return new Board();
+    return this.matrix = matrix;
   }
 
   render() {
