@@ -15,15 +15,26 @@ module.exports = class Board {
     this.matrix = matrix;
   }
 
+  height() {
+    return this.matrix.length;
+  }
+
+  width() {
+    if (this.matrix.length == 0) {
+      return 0;
+    }
+    return this.matrix[0].length;
+  }
+
   setMatrix(matrix) {
     return new Board();
   }
 
   render() {
     let str = "";
-    for(let y = 0; y < this.matrix.length; y++) {
+    for(let y = 0; y < this.height(); y++) {
       let row = this.matrix[y];
-      for(let x = 0; x < row.length; x++) {
+      for(let x = 0; x < this.width(); x++) {
         str += row[x];
       }
       str += "\n"

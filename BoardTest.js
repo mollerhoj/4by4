@@ -8,8 +8,22 @@ module.exports = class BoardTest {
     this.assertEqual(board.render(),expected);
   }
 
+  canReturnHeight() {
+    let board = new Board();
+    board.buildEmpty(3,2);
+    this.assertEqual(board.height(),3);
+  }
+
+  canReturnWidth() {
+    let board = new Board();
+    board.buildEmpty(3,2);
+    this.assertEqual(board.width(),2);
+  }
+
   test() {
     this.canBeBuiltEmpty();
+    this.canReturnHeight();
+    this.canReturnWidth();
   }
 
   assertEqual(a, b) {
