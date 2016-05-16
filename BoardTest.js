@@ -37,11 +37,21 @@ module.exports = class BoardTest extends Test {
     this.assertEqual(board.columnFull(1),true);
   }
 
+  canClone() {
+    let board = new Board();
+    board.setMatrix([['.','.'],['.','O']]);
+    let clone = board.clone();
+    clone.setMatrix([['.','.'],['.','X']]);
+    this.assertEqual(board.render(),"..\n.O\n");
+    this.assertEqual(clone.render(),"..\n.X\n");
+  }
+
   test() {
     this.canBeBuiltEmpty();
     this.canReturnHeight();
     this.canReturnWidth();
     this.canDropToken();
     this.canReturnColumnFull();
+    this.canClone();
   }
 }

@@ -23,7 +23,20 @@ module.exports = class Board {
     return true;
   };
 
-  buildEmpty(height, width) {
+  clone() {
+    let clone = new Board();
+    let cloneMatrix = clone.buildEmptyMatrix(this.height(), this.width());
+    for(let y = 0; y < this.height(); y++) {
+      for(let x = 0; x < this.width(); x++) {
+        cloneMatrix[y][x] = this.matrix[y][x];
+      }
+    }
+
+    clone.setMatrix(cloneMatrix)
+    return clone;
+  }
+
+  buildEmptyMatrix(height, width) {
     let matrix = Array(height);
     for(let y = 0; y < height; y++) {
       matrix[y] = Array(width);
@@ -31,7 +44,11 @@ module.exports = class Board {
         matrix[y][x] = '.';
       }
     }
-    this.matrix = matrix;
+    return matrix;
+  }
+
+  buildEmpty(height, width) {
+    this.matrix = this.buildEmptyMatrix(height, width);
   }
 
   height() {
