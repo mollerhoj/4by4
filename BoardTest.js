@@ -20,10 +20,20 @@ module.exports = class BoardTest {
     this.assertEqual(board.width(),2);
   }
 
+  canDropToken() {
+    let board = new Board();
+    board.buildEmpty(3,3);
+    board.dropToken('X', 1);
+    this.assertEqual(board.render(),"...\n...\n.X.\n");
+    board.dropToken('O', 1);
+    this.assertEqual(board.render(),"...\n.O.\n.X.\n");
+  }
+
   test() {
     this.canBeBuiltEmpty();
     this.canReturnHeight();
     this.canReturnWidth();
+    this.canDropToken();
   }
 
   assertEqual(a, b) {

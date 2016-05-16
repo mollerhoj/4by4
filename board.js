@@ -4,6 +4,16 @@ module.exports = class Board {
     let matrix = null;
   }
 
+  dropToken(token, x) {
+    for(let i = 0; i < this.height(); i++) {
+      let y = this.height() - i - 1;
+      if (this.matrix[y][x] == '.') {
+        this.matrix[y][x] = token;
+        break;
+      }
+    }
+  }
+
   buildEmpty(height, width) {
     let matrix = Array(height);
     for(let y = 0; y < height; y++) {
